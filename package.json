@@ -1,0 +1,79 @@
+{
+  "name": "stinter",
+  "displayName": "strinter",
+  "description": "String interpolation",
+  "publisher": "AymenAbdellaoui",
+  "license": "MIT",
+  "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aymen3009/strinter.git"
+  },
+  "categories": [
+    "Other",
+    "Programming Languages",
+    "Snippets"
+  ],
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.83.0"
+  },
+  "main": "out/extension.js",
+  "activationEvents": [
+    "onLanguage:javascript",
+    "onLanguage:typescript"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "strinter.sayHello",
+        "title": "Hello World"
+      }
+    ],
+    "languages": [
+      {
+        "id": "javascript",
+        "aliases": [
+          "JavaScript",
+          "javascript",
+          "js"
+        ],
+        "extensions": [
+          ".js",
+          ".es6",
+          ".jsx",
+          ".mjs",
+          ".cjs"
+        ],
+        "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "typescript",
+        "aliases": [
+          "TypeScript",
+          "typescript",
+          "ts"
+        ],
+        "extensions": [
+          ".ts",
+          ".tsx"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.3",
+    "@types/vscode": "^1.93.0",
+    "@typescript-eslint/eslint-plugin": "^8.7.0",
+    "@typescript-eslint/parser": "^8.7.0",
+    "eslint": "^9.11.1",
+    "typescript": "^5.6.2"
+  }
+}
