@@ -4,7 +4,9 @@ import { checkComment } from '../helpers/checkcomment';
 let lastLineText = '';
 
 export const autoReplace = (event: vscode.TextDocumentChangeEvent) => {
-
+  const config = vscode.workspace.getConfiguration('strinter');
+  const autoReplace = config.get('enable');
+  if (!autoReplace) return;
   const document = event.document;
   const languageId = document.languageId;
   if (!(languageId === 'javascript' || languageId === 'typescript')) return;
