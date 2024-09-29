@@ -12,10 +12,7 @@
   "categories": [
     "Other",
     "Programming Languages",
-    "Snippets",
-    "autoCorrect",
-    "javascript",
-    "typescript"
+    "Snippets"
   ],
   "version": "1.0.1",
   "engines": {
