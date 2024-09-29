@@ -1,8 +1,8 @@
 {
-  "name": "stinter",
+  "name": "strinter",
   "displayName": "strinter",
   "description": "String interpolation",
-  "publisher": "AymenAbdellaoui",
+  "publisher": "Aymen Abdellaoui",
   "license": "MIT",
   "icon": "icon.png",
   "repository": {
@@ -12,7 +12,10 @@
   "categories": [
     "Other",
     "Programming Languages",
-    "Snippets"
+    "Snippets",
+    "autoCorrect",
+    "javascript",
+    "typescript"
   ],
   "version": "1.0.0",
   "engines": {
@@ -60,7 +63,32 @@
         ],
         "configuration": "./language-configuration.json"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Strinter",
+      "properties": {
+        "strinter.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable/Disable Strinter"
+        },
+        "strinter.quote": {
+          "type": "string",
+          "enum": [
+            "single",
+            "double",
+            "both"
+          ],
+          "default": "both",
+          "enumDescriptions": [
+            "only convert when using single quotes",
+            "only convert when using double quotes",
+            "convert in both cases"
+          ],
+          "description": "Convert to template string when using quotes"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "yarn run compile",

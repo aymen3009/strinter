@@ -1,6 +1,8 @@
 import * as vscode from 'vscode';
 import { checkComment } from '../helpers/checkcomment';
 
+let lastLineText = '';
+
 export const autoReplace = (event: vscode.TextDocumentChangeEvent) => {
 
   const document = event.document;
@@ -11,10 +13,12 @@ export const autoReplace = (event: vscode.TextDocumentChangeEvent) => {
   const editor = vscode.window.activeTextEditor;
   if (!editor) return;
 
-  const position = editor.selection.active;
+  const position = editor.
+  selection.active;
   const currentLine = position.line;
   const lineText = document.lineAt(currentLine).text.trim();
-
+  if (lastLineText === lineText) return;
+  lastLineText = lineText;
 
   if(!lineText || checkComment(editor, document)) return;
 
@@ -32,7 +36,8 @@ export const autoReplace = (event: vscode.TextDocumentChangeEvent) => {
 
 
     // replace the quotes with backticks
-    const newText = text.replace(/['"]/g, "`");
+    const newText = text.replace('`',"\`").replace(/\\(["'])/g, '$1');
+
 
     const edit = new vscode.WorkspaceEdit();
     edit.replace(document.uri, range, newText);
